@@ -68,7 +68,7 @@ namespace impl::logger
 	/// <param name="...parameters">- args for formating</param>
 	/// <returns>printed characters count</returns>
 	template<win_console_colors color = wcon_gray, typename... params>
-	static std::uint32_t log( const char* format, params&&... parameters )
+	inline std::uint32_t log( const char* format, params&&... parameters )
 	{
 		std::lock_guard guard( logger_sync );
 
@@ -88,7 +88,7 @@ namespace impl::logger
 	/// <param name="format">- text would be formatted using this</param>
 	/// <param name="...parameters">- args for formatting</param>
 	template<typename... params>
-	static void error( const char* format, params&&... parameters )
+	inline void error( const char* format, params&&... parameters )
 	{
 		log<wcon_red>( format, std::forward<params>( parameters )... );
 
